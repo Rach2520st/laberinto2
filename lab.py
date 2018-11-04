@@ -50,10 +50,23 @@ def nivel():
 def lento(lab):
     x = 0
     y = 0
-    for linea in lab:
-        #idea: ir creando movimientos aleatorios e ir guardandolos en archivos json y luego ejecutar los movimientos
-
-
+    #se crea un archivo que guarde los movimientos
+    mov = {}
+    with open('mov.json') as file:
+        mov = json.load(file)
+        #generador de movimientos aleatorios y los va guardando en el archivo mov 
+    for indice in range(15):
+        random.randint(1, 4)
+        if indice == 1:
+            mov.append("arrow up")
+        elif indice == 2:
+            mov.append("arrow down")
+        elif indice == 3:
+            mov.append("arrow right")
+        elif indice == 4:
+            mov.append("arrow left")
+        #llama a dibujar y se ejecuta el programa
+        dibujar(mov)
 
 def menu_psolucion(lab):
     valido = True
