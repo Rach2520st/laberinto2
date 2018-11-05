@@ -67,6 +67,12 @@ def lento(lab):
             mov.append("arrow left")
         #llama a dibujar y se ejecuta el programa
         dibujar(mov)
+        return mov
+def rapido(mov):
+    largo = 0
+
+    largo = mov.findall
+
 
 def menu_psolucion(lab):
     valido = True
