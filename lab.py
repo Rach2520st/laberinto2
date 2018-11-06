@@ -54,7 +54,7 @@ def lento(lab):
     mov = {}
     with open('mov.json') as file:
         mov = json.load(file)
-        #generador de movimientos aleatorios y los va guardando en el archivo mov 
+        #generador de movimientos aleatorios y los va guardando en el archivo mov
     for indice in range(15):
         random.randint(1, 4)
         if indice == 1:
@@ -68,10 +68,12 @@ def lento(lab):
         #llama a dibujar y se ejecuta el programa
         dibujar(mov)
         return mov
-def rapido(mov):
+def rapido(mov, movi):
     largo = 0
+    largo = mov.findall('users/users')
+    largo_lab = len(mov)
 
-    largo = mov.findall
+
 
 
 def menu_psolucion(lab):
@@ -86,7 +88,6 @@ def menu_psolucion(lab):
         #si la opcion es 1 vuelve a llamar a la funcion del juego para que vuelva a jugar. 
         if opcion == "1":
             juego()
-        
         elif opcion == "3":
                 lento()
 
@@ -131,7 +132,7 @@ def juego(lab):
     pos_jugador_x = 0
     pos_jugador_y = 0
     lab = lab
-
+    movi = {}
     while True:
         dibujar()
         tecla = input_flechas()
@@ -140,20 +141,22 @@ def juego(lab):
             if lab(pos_jugador_x, pos_jugador_y - 1) != "x":
                 # mover al jugador
                 pos_jugador_y = pos_jugador_y - 1
-
+                movi.append("arrow up")
         elif tecla.name == "arrow down":
             # si el cuadradito de abajo NO es una pared
             if lab(pos_jugador_x, pos_jugador_y + 1) != "x":
                 pos_jugador_y = pos_jugador_y + 1  # mover
-
+                movi.append("arrow down")
         elif tecla.name == "arrow right":
             # si el cuadradito a la derecha NO es una pared
             if lab(pos_jugador_x + 1, pos_jugador_y) != "x":
                 pos_jugador_x = pos_jugador_x + 1
+                movi.append("arrow right")
         elif tecla.name == "arrow left":
             # si el cuadradito a la izquierda NO es una pared
             if lab(pos_jugador_x - 1, pos_jugador_y) != "x":
                     pos_jugador_x = pos_jugador_x - 1
+                    movi.append("arrow left")
         #si la posicion es mayor o igual a 7,7 llama al menu
         elif pos_jugador_x >= 7 and pos_jugador_y >= 7:
             menu_psolucion()
@@ -161,7 +164,7 @@ def juego(lab):
             os.system("clear")
             print("¡El pollito está con su mamá!")
             break
-
+    return movi
 
 intro_al_juego()
 lab = nivel()
