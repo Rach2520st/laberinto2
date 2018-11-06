@@ -68,29 +68,70 @@ def lento(lab):
         #llama a dibujar y se ejecuta el programa
         dibujar(mov)
         return mov
-def rapido(mov, movi):
-    largo = 0
-    largo = mov.findall('users/users')
-    largo_lab = len(mov)
-
-
-
-
+def estandar(lab):
+    lab[0][1] = 5
+    lab[1][1] = 5
+    lab[2][2] = 5
+    lab[3][1] = 5
+    lab[3][2] = 5
+    lab[3][3] = 5
+    lab[3][4] = 5
+    lab[4][6] = 5
+    lab[5][6] = 5
+    lab[6][6] = 5
+    lab[6][7] = 5
+    lab[6][8] = 5
+    lab[7][8] = 5
+    lab[8][8] = 5
+    lab[8][9] = 5
+    lab[8][10] = 5
+    lab[9][10] = 5
+    lab[10][10] = 5
+    lab[11][10] = 5
+    lab[12][10] = 5
+    lab[13][10] = 5
+    lab[13][11] = 5
+    lab[13][12] = 5
+    lab[13][13] = 5
+    lab[13][14] = 5
+    lab[14][14] = 5
+    pos_jugador_x = 0
+    pos_jugador_y = 0
+    x = 0
+    y = 0
+    for linea in lab:
+        for item in linea:
+            if pos_jugador_x == x and pos_jugador_y == y:
+                print("🐥", end='')
+                x = x + 1
+            elif item == 1:
+                print("x", end='')
+                x = x + 1
+            elif item == 3:
+                print("🐔")
+                x = x + 1
+            elif item == 0:
+                print(" ", end='')
+                y = y + 1
+            elif item == "-":
+                print("-", end='')
+        print(" ")
+#esta funcion dibuja directamente la salida estandar del juego
 def menu_psolucion(lab):
     valido = True
     while valido:
         print("""\n Seleccione la opción que desee realizar:
         1.- seguir jugando
-        2.- encontrar la salida más rápida
-        3.- ir por el camino más lento
-        4.- ir por el camino estándar""")
+        2.- ir por el camino más lento
+        4.- ir por el camino estándar(más rápido)""")
         opcion = input()
         #si la opcion es 1 vuelve a llamar a la funcion del juego para que vuelva a jugar. 
         if opcion == "1":
             juego()
+        elif opcion == "2":
+            lento(lab)
         elif opcion == "3":
-                lento()
-
+            estandar(lab)
         else:
             print("esa opción no es válida, intentelo de nuevo")
             valido = False
